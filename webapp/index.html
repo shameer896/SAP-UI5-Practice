@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Controll</title>
     <script id="sap-ui-boostrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
-        data-sap-ui-theme="sap_bluecrystal" data-sap-ui-libs="sap.m" data-sap-ui-async="true"></script>
+        data-sap-ui-theme="sap_bluecrystal" data-sap-ui-libs="sap.m,sap.ui.commons" data-sap-ui-async="true"></script>
     <script>sap.ui.getCore().attachInit(function () {
 
             var onImgPress = function (oEvent) {
@@ -22,16 +22,49 @@
 
             var oImage1 = new sap.m.Image("image1", {
                 src: "Images/image.jpg",
-                press: onImgPress, width: "100px", height: "80px"
+                press: onImgPress, width: "600px", height: "400px"
             });
 
             var oImage2 = new sap.m.Image("image2", {
                 src: "Images/image.jpg",
-                press: onImgPress, width: "100px", height: "80px"
+                press: onImgPress, width: "600px", height: "400px"
             });
             // oImage.setSrc("Images/image.jpg");
-            oImage1.placeAt("content");
-            oImage2.placeAt("content");
+            oImage1.addStyleClass("sapUiSmallMargin");
+            oImage2.addStyleClass("sapUiSmallMargin");
+
+            var oRadioButton1 = new sap.m.RadioButton({
+                text: "first Radio Button"
+            });
+
+            var oRadioButton2 = new sap.m.RadioButton({
+                text: "Second Radio Button"
+            });
+
+            var oRadioButtonGroup = new sap.m.RadioButtonGroup({
+                columns: 2
+            });
+
+            oRadioButtonGroup.setAggregation("tooltip", "radio Button test tooltip");
+            oRadioButtonGroup.addButton(oRadioButton1);
+            oRadioButtonGroup.addButton(oRadioButton2);
+
+            var oToolBar = new sap.m.Toolbar();
+            oToolBar.addContent(new sap.m.Label({ text: "Radio Buttons Below" }));
+
+            var oForm = new sap.ui.layout.form.SimpleForm({ layout: "ResponsiveGridLayout" });
+            oForm.addContent(oToolBar);
+            oForm.addContent(oRadioButtonGroup);
+
+            var oLayout = new sap.ui.layout.Grid({
+                content: [oImage1, oImage2, oForm]
+            });
+
+            oLayout.placeAt("content");
+
+            // oImage1.placeAt("content");
+            // oImage2.placeAt("content");
+            // oForm.placeAt("content");
         });
 
     </script>
