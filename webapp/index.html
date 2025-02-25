@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Controll</title>
+    <script id="sap-ui-boostrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_bluecrystal" data-sap-ui-libs="sap.m" data-sap-ui-async="true"></script>
+    <script>sap.ui.getCore().attachInit(function () {
+            var oImage = new sap.m.Image();
+            oImage.setSrc("Images/image.jpg");
+            oImage.placeAt("content");
+        });
+
+    </script>
+</head>
+
+<body class="sapUiBody" id="content">
+
+</body>
+
+</html>
