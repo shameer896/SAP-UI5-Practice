@@ -8,14 +8,30 @@
     <script id="sap-ui-boostrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
         data-sap-ui-theme="sap_bluecrystal" data-sap-ui-libs="sap.m" data-sap-ui-async="true"></script>
     <script>sap.ui.getCore().attachInit(function () {
-            var oImage = new sap.m.Image({
-                src: "Images/image.jpg",
-                press: function () {
-                    alert("Images was pressed");
+
+            var onImgPress = function (oEvent) {
+                var oImgId = oEvent.getSource().getId();
+                if (oImgId === "image1") {
+                    alert("Images 1 was pressed");
                 }
+                else {
+                    alert("Images 2 was pressed");
+                }
+
+            }
+
+            var oImage1 = new sap.m.Image("image1", {
+                src: "Images/image.jpg",
+                press: onImgPress, width: "100px", height: "80px"
+            });
+
+            var oImage2 = new sap.m.Image("image2", {
+                src: "Images/image.jpg",
+                press: onImgPress, width: "100px", height: "80px"
             });
             // oImage.setSrc("Images/image.jpg");
-            oImage.placeAt("content");
+            oImage1.placeAt("content");
+            oImage2.placeAt("content");
         });
 
     </script>
